@@ -1,4 +1,4 @@
-#LT3R-BT (Looter Bot) version 0.8
+# LT3R-BT (Looter Bot) version 0.8
 A Discord Bot that finds information on equipable weapons and items form looter games such as:
   • Borderlands 
   • Diablo
