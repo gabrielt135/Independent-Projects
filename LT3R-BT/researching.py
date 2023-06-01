@@ -43,11 +43,32 @@ def research(weapon,  game,  set)->str:
     summary = getSum(page.url)
         
     if set == 1:
-        retstr = str(summary) +"\n\n" + str(page.section("Special Weapon Effects"))
+        if page.section("Special Weapon Effects"):
+            spcWepEff = page.section("Special Weapon Effects")
+        else:
+            spcWepEff = "No special effect could be found."
+        retstr = str(summary) +"\n\n" + spcWepEff
         retstr.replace('\'', '')
         retstr.rstrip("\n")
+
     elif set == 0:
-        retstr = str(summary) +"\n\n" + str(page.section("Special Weapon Effects")) + "\n\n" + str(page.section("Usage & Description")) + "\n\n" + str(page.section("Notes"))
+        if page.section("Special Weapon Effects"):
+            spcWepEff = page.section("Special Weapon Effects")
+        else:
+            spcWepEff = "No special effect could be found."
+    
+        if page.section("Usage & Description"):
+            usgDsc1 = page.section("Usage & Description")
+            usgDsc = usgDsc1[:usgDsc1.find("Expert")-10]
+        else:
+            usgDsc = "No information on recommended use could be found."
+    
+        if page.section("Notes"):
+            notes = page.section("Notes")
+        else:
+            notes = "No special information could be found."
+        
+        retstr = str(summary) +"\n\n" + str(spcWepEff)+ "\n\n" + str(usgDsc) + "\n\n" + str(notes)
         retstr.replace('\'', '')
         retstr.rstrip("\n")
     else:
